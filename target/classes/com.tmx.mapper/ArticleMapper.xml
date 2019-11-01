@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.tmx.mapper.ArticleMapper" >
+  
+  
+  <select id="getAllArticle"  resultType="com.tmx.domain.Article">
+  	select * from `article`
+  </select>
+  <!-- 获得单篇文章的详情 -->
+   <select id="getArticleDetails"  resultType="com.tmx.domain.Article">
+  	select * from article where article_id = #{article_id};
+  </select>
+  
+  <!-- 删除文章 -->
+   <delete id="deleteArticle">
+   	delete from article where article.article_id = #{article_id};
+   </delete>
+   <!-- 添加文章 -->
+   <insert id="addArticle" parameterType="com.tmx.domain.Article">
+  	 insert into article 
+	(article.article_id,article.article_title,article.article_context,article.article_time,article.article_category)
+	values 
+	(#{article_id},#{article_title},#{article_context},#{article_time},#{article_category})
+   </insert>
+</mapper>
