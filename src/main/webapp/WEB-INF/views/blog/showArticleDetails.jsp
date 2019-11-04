@@ -8,7 +8,7 @@
 <head>
 <meta charset="UTF-8">
 
-<title>博客页面</title>
+<title>文章《${singleArticlDetails.article_title }》</title>
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/static/img/favicon.ico" type="image/x-icon">
 <link rel="icon" href="${pageContext.request.contextPath}/static/img/favicon.ico" type="image/x-icon">
 
@@ -20,6 +20,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 <style>
+	 body{
+	 	 background:url('${pageContext.request.contextPath}/static/img/2.jpg') no-repeat ;
+	 	 background-size: cover;
+	 }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -34,7 +38,10 @@
           font-size: 3.5rem;
         }
       }
-       
+        .article-context{
+      	
+      	width:100%;
+	}
 </style>
 </head>
  <body>
@@ -45,7 +52,7 @@
         <a class="text-muted" href="${pageContext.request.contextPath}/index.jsp">首页</a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-info font-weight-bold	 text-left" >查看文章</a>
+        <a class="blog-header-logo font-weight-bold	 text-left" >查看文章</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#">
@@ -63,36 +70,15 @@
  
 <main role="main" class="container">
   <div class="row">
-    <div class="col-md-8 blog-main">
-      
-
-      <div class="blog-post bg-light mt-5" id="articleShow">
-         <h2 class="blog-post-title font-weight-bold mb-3" >${singleArticlDetails.article_title }</h2>
-        <p class="blog-post-meta"><fmt:formatDate value="${singleArticlDetails.article_time}" pattern="yyyy-MM-dd"/></p>
-		<p class="article-context">${singleArticlDetails.article_context }</p>
+    <div class="col-md-15 blog-main">
+      <div class="blog-post p-5 bg-light mt-5" id="articleShow">
+         <h2 class="blog-post-title text-center font-weight-bold mb-3" >${singleArticlDetails.article_title }</h2>
+        <p class="blog-post-meta text-center"><fmt:formatDate value="${singleArticlDetails.article_time}" pattern="yyyy-MM-dd"/></p>
+		<div class="article-context ">${singleArticlDetails.article_context }</div>
 	  </div>
-	  
-   
     </div>
-    <aside class="col-md-4 mt-5 blog-sidebar">
-      <div class="p-4 mb-3  bg-light rounded">
-        <h4 class="font-italic">关于</h4>
-        <p class="mb-0">这是一个记录日常生活、工作和技术的博客，出于自己的兴趣搭建而成，在做博客的过程中，学习了很多技术，成长了不少，写在这里自勉。</p>
-      </div>
-
-     
-      <div class="p-4">
-        <h4 class="font-italic">链接</h4>
-        <ol class="list-unstyled">
-          <li><a href="https://v3.bootcss.com" target="_blank">bootstrap中文网</a></li>
-          <li><a href="https://www.baidu.com" target="_blank">百度一下</a></li>
-          <li><a href="https://www.bilibili.com" target="_blank">b站</a></li>
-        </ol>
-      </div>
-    </aside><!-- /.blog-sidebar -->
   </div>
 </main>
-
 <footer class="blog-footer">
   <p > 当前日期 </p>
   <p id="datatime"> </p>
@@ -100,11 +86,12 @@
     <a href="#">返回顶部↑</a>
   </p>
   <div class="inner">
-            <p><a href="http://www.beian.miit.gov.cn">桂ICP备19008952号</a></p>
-        </div>
+     <p><a href="http://www.beian.miit.gov.cn">桂ICP备19008952号</a></p>
+  </div>
 </footer>
 <script type="text/javascript">
 $(function(){
+	getTime();
 	function getTime(){
 		 	var myDate = new Date;
 		    var year = myDate.getFullYear(); //获取当前年

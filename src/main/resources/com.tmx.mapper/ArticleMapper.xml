@@ -22,4 +22,14 @@
 	values 
 	(#{article_id},#{article_title},#{article_context},#{article_time},#{article_category})
    </insert>
+   <!-- 编辑文章 -->
+   <update id="editArticle" parameterType="com.tmx.domain.Article">
+   	update article as a set 
+	a.article_title = #{article_title},
+	a.article_context = #{article_context},
+	a.article_time = #{article_time},
+	a.article_category = #{article_category}
+	where 
+	a.article_id = #{article_id}
+   </update>
 </mapper>

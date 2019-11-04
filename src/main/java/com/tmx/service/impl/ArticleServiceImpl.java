@@ -35,5 +35,9 @@ public class ArticleServiceImpl implements ArticleService{
 	public void addArticle(Article article) {
 		articleMapper.addArticle(article);
 	}
+	@Override
+	public void editArticleFinshed(Article article) {
+		articleMapper.editArticle(article);
+	}
 
 }

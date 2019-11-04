@@ -9,5 +9,6 @@ public interface ArticleMapper {
 	/*获得单篇文章的详情*/
 	public Article getArticleDetails(String article_id);
 	public void deleteArticle(String article_id);
-	public void addArticle(Article article); 
+	public void addArticle(Article article);
+	public void editArticle(Article article); 
 }

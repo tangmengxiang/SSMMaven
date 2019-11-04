@@ -10,6 +10,12 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 <style>
+	body{
+	 	 background:url('${pageContext.request.contextPath}/static/img/2.jpg');
+	 	 background-repeat:no-repeat;
+	 	 background-size: cover;
+	 	 
+	 }
     .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -44,10 +50,10 @@
     </header>
 
     <main role="main" class="inner cover">
-        <h1 class="cover-heading">您好！欢迎来访！</h1>
-        <p class="lead">该页面设计基于网络模板，以黑色为底色来构建主页是个人喜好，如果你有更好的建议，请来联系我！</p>
+        <h1 class="cover-heading">欢迎您的来访！</h1>
+        <p class="lead">博客系统对游客只开放阅读权限，感谢关注！</p>
         <p class="lead">
-            <a href="#" class="btn btn-lg btn-secondary">了解更多</a>
+            <a href="${pageContext.request.contextPath}/blog" class="btn btn-lg btn-secondary">进入博客</a>
         </p>
     </main>
 

@@ -19,6 +19,10 @@
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/jquery-3.4.1.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath}/static/js/bootstrap.js"></script>
 <style>
+	 body{
+	 	 background:url('${pageContext.request.contextPath}/static/img/2.jpg') no-repeat ;
+	 	 background-size: cover;
+	 }
       .bd-placeholder-img {
         font-size: 1.125rem;
         text-anchor: middle;
@@ -84,42 +88,42 @@
     <div class="card bg-success text-white font-weight-bold mt-4 mb-3">
    		 <div class="card-body "><h3>文章列表 &nbsp; <span class="small">点击标题查看全文</span></h3></div>
  	 </div>
-      <div class="blog-post bg-light" id="articleShow">
+      <div class="blog-post bg-light " id="articleShow">
      <!--    <h2 class="blog-post-title text-success" >论语·学而篇</h2>
         <p class="blog-post-meta">2019-10-25 by <a href="#">tmx</a></p>
 		<p class="article-context">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;子曰：“学而时习之，不亦说乎？有朋自远方来，不亦乐乎？人不知而不愠，不亦君子乎？”<br><br></p>
 	  --> </div>
 	  
-      <nav class="blog-pagination">
+     <!-- <!--  <nav class="blog-pagination">
         <a class="btn btn-outline-primary" href="#">先前文章</a>
         <a class="btn btn-outline-secondary disabled" href="#" tabindex="-1" aria-disabled="true">最新文章</a>
-      </nav>
+      </nav> -->
     </div>
     <aside class="col-md-4 mt-4 blog-sidebar">
-      <div class="p-4 mb-3  bg-light rounded">
+      <div class="p-4  bg-info rounded">
         <h4 class="font-italic">关于</h4>
         <p class="mb-0">这是一个记录日常生活、工作和技术的博客，出于自己的兴趣搭建而成，在做博客的过程中，学习了很多技术，成长了不少，写在这里自勉。</p>
       </div>
 
-      <div class="p-4">
+      <div class="p-4 bg-warning">
         <h4 class="font-italic">归档</h4>
-        <ol class="list-unstyled mb-0">
-          <li><a href="#">2019-1</a></li>
-          <li><a href="#">2019-2</a></li>
-          <li><a href="#">2019-3</a></li>
-          <li><a href="#">2019-4</a></li>
-          <li><a href="#">2019-5</a></li>
-          <li><a href="#">2019-6</a></li>
-          <li><a href="#">2019-7</a></li>
-          <li><a href="#">2019-8</a></li>
-          <li><a href="#">2019-9</a></li>
-          <li><a href="#">2019-10</a></li>
-          <li><a href="#">2019-11</a></li>
-          <li><a href="#">2019-12</a></li>
+        <ol class="list-unstyled mb-0 ">
+          <li><a >2019-1</a></li>
+          <li><a >2019-2</a></li>
+          <li><a >2019-3</a></li>
+          <li><a >2019-4</a></li>
+          <li><a >2019-5</a></li>
+          <li><a >2019-6</a></li>
+          <li><a >2019-7</a></li>
+          <li><a >2019-8</a></li>
+          <li><a >2019-9</a></li>
+          <li><a >2019-10</a></li>
+          <li><a >2019-11</a></li>
+          <li><a >2019-12</a></li>
         </ol>
       </div>
 
-      <div class="p-4">
+      <div class="p-4 bg-white">
         <h4 class="font-italic">链接</h4>
         <ol class="list-unstyled">
           <li><a href="https://v3.bootcss.com" target="_blank">bootstrap中文网</a></li>
@@ -138,8 +142,8 @@
     <a href="#">返回顶部↑</a>
   </p>
   <div class="inner">
-            <p><a href="http://www.beian.miit.gov.cn">桂ICP备19008952号</a></p>
-        </div>
+     <p><a href="http://www.beian.miit.gov.cn">桂ICP备19008952号</a></p>
+  </div>
 </footer>
 <script type="text/javascript">
 $(function(){
@@ -179,7 +183,7 @@ $(function(){
 			for(i in data){ 
 				html = '<h2 class="blog-post-title text-success" >' + '<a class="small mb-2 text-info font-weight-bold" target="_blank" href="${pageContext.request.contextPath}/showArticleDetails?article_id='+data[i].article_id +'">'+data[i].article_title + '</a>'+'</h2>';
 				html += '<p class="blog-post-meta">'+ data[i].article_time + '</p>';
-				html += '<p class="article-context">' + data[i].article_context + '</p>' + '<hr style="width:50%;"  align="left">';
+				html += '<div class="article-context">' + data[i].article_context + '</div>' + '<hr style="width:50%;"  align="left">';
 				html += '</div>'
 					//alert(html);
 				$('#articleShow').append(html);
