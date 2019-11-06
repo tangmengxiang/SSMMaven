@@ -10,5 +10,9 @@ public interface ArticleMapper {
 	public Article getArticleDetails(String article_id);
 	public void deleteArticle(String article_id);
 	public void addArticle(Article article);
-	public void editArticle(Article article); 
+	public void editArticle(Article article);
+	/* 分类查找文章*/
+	public List<Article> getArticleByCategory(String category);
+	/*根据时间查找文章*/
+	public List<Article> getArticleByTime(String time); 
 }

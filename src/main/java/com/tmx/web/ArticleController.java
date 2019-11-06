@@ -3,7 +3,6 @@ package com.tmx.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,13 +19,29 @@ public class ArticleController {
 	@Autowired
 	private ArticleService articleService;
 	
-	/*得到所有的文章*/
+	/*根据分类查询文章*/
 	@RequestMapping("/getAllArticle")
 	@ResponseBody
-	public List<Article> getAllArticle() {
-		List<Article> article = articleService.getAllArticle();
-		return article;
+	public List<Article> getAllArticle(String category) {
+		if("".equals(category) || category == null) {
+			List<Article> article = articleService.getAllArticle();
+			return article;
+		}else{
+			List<Article> articleByCategory = articleService.getArticleByCategory(category);
+			return articleByCategory;
+		}
 	}
+	
+	/*根据时间查询文章*/
+	@RequestMapping("/getArticleByTime")
+	@ResponseBody
+	public List<Article> getArticleByTime(String time) {
+		System.out.println("时间" + time);
+		//查询
+		List<Article> articleByTime = articleService.getArticleByTime(time);
+		return articleByTime;
+	}
+	
 	
 	/*准备添加文章*/
 	@RequestMapping("/readyAddArticle")

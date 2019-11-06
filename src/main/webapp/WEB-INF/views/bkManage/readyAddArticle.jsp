@@ -21,6 +21,14 @@
 		文章标题：<input type="text" name="article_title"> <br>
 		<input id="articleTime" type="hidden" name="article_time"> 
 		文章分类：<input type="text" name="article_category" value="0">
+		<select  name="article_category">
+				<option selected="selected" value="0">技术</option>
+				<option value="1">java</option>
+				<option value="2">mysql</option>
+				<option value="3">生活</option>
+				<option value="4">工作</option>
+				<option value="5">私密</option>
+		</select>
 		<div id="editor" name="article_context" style="width:900px;height:400px;"></div>
 		<button type="submit">提交</button>
 		</form>
@@ -30,7 +38,7 @@
 <script type="text/javascript">
 	$(function(){
 		//初始化编辑器
-		var ue = UE.getEditor('editor');
+		var ue = UE.getEditor('editor', { initialFrameWidth: null , autoHeightEnabled: false});
 		var mydate = new Date();
 		$('#articleTime').val(getTime2());
 		function getTime1(){

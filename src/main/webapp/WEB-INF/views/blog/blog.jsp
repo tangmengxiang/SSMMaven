@@ -71,14 +71,14 @@
   </header>
   <div class="nav-scroller py-1 mb-2 mt-3">
     <nav class="nav d-flex justify-content-between">
-      <button type="button" class="btn btn-info">技术</button>
-      <button type="button" class="btn btn-info">java</button>
-      <button type="button" class="btn btn-info">mysql</button>
-      <button type="button" class="btn btn-info">生活</button>
-      <button type="button" class="btn btn-info">工作</button>
+      <button type="button" class="btn btn-success category" data-category="0">技术</button>
+      <button type="button" class="btn btn-info category" data-category="1">java</button>
+      <button type="button" class="btn btn-info category" data-category="2">mysql</button>
+      <button type="button" class="btn btn-info category" data-category="3">生活</button>
+      <button type="button" class="btn btn-info category" data-category="4">工作</button>
       <shiro:user>
-    	 <button type="button" class="btn btn-success">私密</button>
-    	 <button type="button" class="btn btn-success" id="bkManage">后台管理</button>
+    	 <button type="button" class="btn btn-info category" data-category="5">私密</button>
+    	 <button type="button" class="btn btn-info" id="bkManage">后台管理</button>
       </shiro:user>
     </nav>
   </div>
@@ -108,18 +108,18 @@
       <div class="p-4 bg-warning">
         <h4 class="font-italic">归档</h4>
         <ol class="list-unstyled mb-0 ">
-          <li><a >2019-1</a></li>
-          <li><a >2019-2</a></li>
-          <li><a >2019-3</a></li>
-          <li><a >2019-4</a></li>
-          <li><a >2019-5</a></li>
-          <li><a >2019-6</a></li>
-          <li><a >2019-7</a></li>
-          <li><a >2019-8</a></li>
-          <li><a >2019-9</a></li>
-          <li><a >2019-10</a></li>
-          <li><a >2019-11</a></li>
-          <li><a >2019-12</a></li>
+          <li><a class="timeBtn">2019-01</a></li>
+          <li><a class="timeBtn">2019-02</a></li>
+          <li><a class="timeBtn">2019-03</a></li>
+          <li><a class="timeBtn">2019-04</a></li>
+          <li><a class="timeBtn">2019-05</a></li>
+          <li><a class="timeBtn">2019-06</a></li>
+          <li><a class="timeBtn">2019-07</a></li>
+          <li><a class="timeBtn">2019-08</a></li>
+          <li><a class="timeBtn">2019-09</a></li>
+          <li><a class="timeBtn">2019-10</a></li>
+          <li><a class="timeBtn">2019-11</a></li>
+          <li><a class="timeBtn">2019-12</a></li>
         </ol>
       </div>
 
@@ -150,7 +150,7 @@ $(function(){
 	
 	var preUrl = document.referrer;
 	getTime();
-	loadArticle();
+	loadArticle("getAllArticle?category=0");
 	$('.login').click(function(){
 		$(window).attr('location','${pageContext.request.contextPath}/readyLogin');
 	});
@@ -164,6 +164,26 @@ $(function(){
 	$('#bkManage').click(function(){
 		$(window).attr('location','${pageContext.request.contextPath}/bkManage');
 	});
+	$('.category').click(function(){
+		//变化颜色
+		$(this).removeClass('btn-info').addClass('btn-success');
+		$(this).siblings().removeClass('btn-success').addClass('btn-info');
+		//获取分类
+		var category= $(this).data("category");
+		//先清空所有的内容
+		clearArticleList();
+		//数据库中查询并展示数据
+		loadArticle('getAllArticle?category=' + category );
+	});
+	$('.timeBtn').click(function(){
+		//清空文章列表
+		clearArticleList();
+		//获取时间日期
+		var time = $(this).html();
+		//调用查询函数
+		alert('getArticleByTime?time=' + time);
+		loadArticle('getArticleByTime?time=' + time );
+	});
 	function getTime(){
 		 	var myDate = new Date;
 		    var year = myDate.getFullYear(); //获取当前年
@@ -176,8 +196,9 @@ $(function(){
 		    var weeks = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 		    $("#datatime").html(year + "-" + mon + "-" + date + "&nbsp;      " + weeks[week]);
 	}
-	function loadArticle(){
-		$.post("${pageContext.request.contextPath}/getAllArticle",function(data){
+	/*分类、分时间查询文章*/
+	function loadArticle(requestURL){
+		$.post('${pageContext.request.contextPath}/' + requestURL,function(data){
 			console.log(data);
 			var html = '<div>';
 			for(i in data){ 
@@ -190,6 +211,9 @@ $(function(){
 			}
 			
 		})
+	}
+	function clearArticleList(){
+		$('#articleShow').html("");
 	}
 	
 })

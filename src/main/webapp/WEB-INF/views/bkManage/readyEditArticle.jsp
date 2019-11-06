@@ -21,7 +21,15 @@
 		<input type="hidden" value="${editArticle.article_id }" name="article_id">
 		<input id="articleTime" type="hidden" value="${editArticle.article_time }" name="article_time">
 		文章标题：<input type="text" name="article_title" value="${editArticle.article_title }"> <br>
-		文章分类：<input type="text" name="article_category" value="${editArticle.article_category }">
+		文章分类：<%-- <input type="text" name="article_category" value="${editArticle.article_category }"> --%>
+		<select  name="article_category" id="article_category_select">
+				<option selected="selected" value="0">技术</option>
+				<option value="1">java</option>
+				<option value="2">mysql</option>
+				<option value="3">生活</option>
+				<option value="4">工作</option>
+				<option value="5">私密</option>
+		</select>
 		<input type="hidden" id="articleContext" value="${editArticle.article_context }">
 		<div id="editor" name="article_context" style="width:900px;height:400px;"></div>
 		<button type="submit">修改</button>
@@ -31,12 +39,13 @@
 </body>
 <script type="text/javascript">
 	$(function(){
+		//文章分类
+		$("#article_category_select option[value='${editArticle.article_category }']").prop("selected",true);//显示当前项目性质
 		//文章时间
 		var time = $('#articleTime').val();
 		$('#articleTime').val(getTaskTime(time));
-		alert($('#articleTime').val());
 		//初始化编辑器
-		var ue = UE.getEditor('editor');
+		var ue = UE.getEditor('editor', { initialFrameWidth: null , autoHeightEnabled: false});
 		ue.ready(function(){
 			ue.execCommand("inserthtml",$('#articleContext').val());
 		})

@@ -39,5 +39,15 @@ public class ArticleServiceImpl implements ArticleService{
 	public void editArticleFinshed(Article article) {
 		articleMapper.editArticle(article);
 	}
+	/* 分类查找文章*/
+	@Override
+	public List<Article> getArticleByCategory(String category) {
+		return articleMapper.getArticleByCategory(category);
+	}
+	@Override
+	public List<Article> getArticleByTime(String time) {
+		articleMapper.getArticleByTime(time);
+		return null;
+	}
 
 }
