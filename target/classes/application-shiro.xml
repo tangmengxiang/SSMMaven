@@ -38,7 +38,7 @@
                 /logout = logout	<!-- 退出登录 -->
                 /getAllArticle = anon
                 /showArticleDetails = anon
-               
+               /getArticleByTime = anon
                 /**=authc     <!--除指定请求外,其它所有的请求都需要身份验证-->
             </value>
         </property>

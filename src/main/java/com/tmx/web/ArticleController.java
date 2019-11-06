@@ -39,6 +39,7 @@ public class ArticleController {
 		System.out.println("时间" + time);
 		//查询
 		List<Article> articleByTime = articleService.getArticleByTime(time);
+		System.out.println(articleByTime);
 		return articleByTime;
 	}
 	

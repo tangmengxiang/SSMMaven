@@ -44,6 +44,10 @@
 		text-overflow:ellipsis;
 		white-space: nowrap;
 	}
+	.timeBtn{
+		cursor: pointer;
+	}
+	
 </style>
 </head>
  <body>
@@ -54,7 +58,7 @@
         <a class="text-muted" href="${pageContext.request.contextPath}/index.jsp">首页</a>
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-info font-weight-bold	 text-left" >学无止境</a>
+        <a class="blog-header-logo text-info font-weight-bold text-left" >学无止境</a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
         <a class="text-muted" href="#">
@@ -107,7 +111,7 @@
 
       <div class="p-4 bg-warning">
         <h4 class="font-italic">归档</h4>
-        <ol class="list-unstyled mb-0 ">
+        <ol class="list-unstyled mb-0  mt-2">
           <li><a class="timeBtn">2019-01</a></li>
           <li><a class="timeBtn">2019-02</a></li>
           <li><a class="timeBtn">2019-03</a></li>
@@ -127,7 +131,7 @@
         <h4 class="font-italic">链接</h4>
         <ol class="list-unstyled">
           <li><a href="https://v3.bootcss.com" target="_blank">bootstrap中文网</a></li>
-          <li><a href="https://www.baidu.com" target="_blank">百度一下</a></li>
+          
           <li><a href="https://www.bilibili.com" target="_blank">b站</a></li>
         </ol>
       </div>
@@ -181,7 +185,7 @@ $(function(){
 		//获取时间日期
 		var time = $(this).html();
 		//调用查询函数
-		alert('getArticleByTime?time=' + time);
+		//alert('getArticleByTime?time=' + time);
 		loadArticle('getArticleByTime?time=' + time );
 	});
 	function getTime(){
@@ -201,15 +205,18 @@ $(function(){
 		$.post('${pageContext.request.contextPath}/' + requestURL,function(data){
 			console.log(data);
 			var html = '<div>';
-			for(i in data){ 
-				html = '<h2 class="blog-post-title text-success" >' + '<a class="small mb-2 text-info font-weight-bold" target="_blank" href="${pageContext.request.contextPath}/showArticleDetails?article_id='+data[i].article_id +'">'+data[i].article_title + '</a>'+'</h2>';
-				html += '<p class="blog-post-meta">'+ data[i].article_time + '</p>';
-				html += '<div class="article-context">' + data[i].article_context + '</div>' + '<hr style="width:50%;"  align="left">';
-				html += '</div>'
-					//alert(html);
+			if(data == ""){
+				html += '<h3 class="text-danger mt-5">对不起，该分类下没有文章<h3></div>';
 				$('#articleShow').append(html);
+			}else{
+				for(i in data){ 
+					html = '<h2 class="blog-post-title text-success" >' + '<a class="small mb-2 text-info font-weight-bold" target="_blank" href="${pageContext.request.contextPath}/showArticleDetails?article_id='+data[i].article_id +'">'+data[i].article_title + '</a>'+'</h2>';
+					html += '<p class="blog-post-meta">'+ data[i].article_time + '</p>';
+					html += '<div class="article-context">' + data[i].article_context + '</div>' + '<hr style="width:50%;"  align="left">';
+					html += '</div>'
+					$('#articleShow').append(html);
+				}
 			}
-			
 		})
 	}
 	function clearArticleList(){

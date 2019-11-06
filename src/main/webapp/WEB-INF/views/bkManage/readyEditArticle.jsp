@@ -22,7 +22,7 @@
 		<input id="articleTime" type="hidden" value="${editArticle.article_time }" name="article_time">
 		文章标题：<input type="text" name="article_title" value="${editArticle.article_title }"> <br>
 		文章分类：<%-- <input type="text" name="article_category" value="${editArticle.article_category }"> --%>
-		<select  name="article_category" id="article_category_select">
+		<select class="mt-2"  name="article_category" id="article_category_select">
 				<option selected="selected" value="0">技术</option>
 				<option value="1">java</option>
 				<option value="2">mysql</option>
@@ -31,8 +31,8 @@
 				<option value="5">私密</option>
 		</select>
 		<input type="hidden" id="articleContext" value="${editArticle.article_context }">
-		<div id="editor" name="article_context" style="width:900px;height:400px;"></div>
-		<button type="submit">修改</button>
+		<div class="mt-4" id="editor" name="article_context" style="width:900px;height:500px;"></div>
+		<button class="btn btn-success mt-4" type="submit">修改</button>
 		</form>
 	</div>
 </div>

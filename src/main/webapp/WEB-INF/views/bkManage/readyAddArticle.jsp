@@ -20,8 +20,8 @@
 		<form  action="${pageContext.request.contextPath}/addArticle">
 		文章标题：<input type="text" name="article_title"> <br>
 		<input id="articleTime" type="hidden" name="article_time"> 
-		文章分类：<input type="text" name="article_category" value="0">
-		<select  name="article_category">
+		文章分类：
+		<select class="mt-2" name="article_category">
 				<option selected="selected" value="0">技术</option>
 				<option value="1">java</option>
 				<option value="2">mysql</option>
@@ -29,8 +29,8 @@
 				<option value="4">工作</option>
 				<option value="5">私密</option>
 		</select>
-		<div id="editor" name="article_context" style="width:900px;height:400px;"></div>
-		<button type="submit">提交</button>
+		<div class="mt-4" id="editor" name="article_context" style="width:900px;height:500px;"></div>
+		<button type="submit" class="btn btn-success mt-4">提交</button>
 		</form>
 	</div>
 </div>

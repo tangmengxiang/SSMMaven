@@ -46,8 +46,7 @@ public class ArticleServiceImpl implements ArticleService{
 	}
 	@Override
 	public List<Article> getArticleByTime(String time) {
-		articleMapper.getArticleByTime(time);
-		return null;
+		return articleMapper.getArticleByTime(time);
 	}
 
 }

@@ -16,12 +16,12 @@
   </select>
   <!-- 根据时间查找文章,排除私密文章 -->
    <select id="getArticleByTime"  resultType="com.tmx.domain.Article">
-  	SELECT * FROM 
-  		article as a
+  	select * from 
+  		`article` as a
   	 where 
   	 	date_format(a.article_time,'%Y-%m')=#{time}
-  	 and 
-  	 	not a.article_category = '5';
+  	 and not 
+  	 	a.article_category = '5';
   </select>
   
   <!-- 删除文章 -->
