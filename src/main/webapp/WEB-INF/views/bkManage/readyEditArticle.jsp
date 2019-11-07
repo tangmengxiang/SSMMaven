@@ -30,7 +30,7 @@
 				<option value="4">工作</option>
 				<option value="5">私密</option>
 		</select>
-		<input type="hidden" id="articleContext" value="${editArticle.article_context }">
+		<input type="hidden" id="articleContext" value='${editArticle.article_context }'>
 		<div class="mt-4" id="editor" name="article_context" style="width:900px;height:500px;"></div>
 		<button class="btn btn-success mt-4" type="submit">修改</button>
 		</form>
